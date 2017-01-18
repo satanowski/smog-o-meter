@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+LCD44780 display I2C library
+Copyright (C) 2017 Satanowski <satanowski@gmail.com>
+License: GNU AGPLv3
+"""
+
 import time
 
 import smbus2

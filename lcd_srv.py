@@ -1,3 +1,9 @@
+"""
+LCD44780 display socket server
+Copyright (C) 2017 Satanowski <satanowski@gmail.com>
+License: GNU AGPLv3
+"""
+
 import os
 import socket
 import json
