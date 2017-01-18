@@ -60,7 +60,7 @@ class BMP280:
         msb, lsb, xlsb = self._read(reg, 3)
         return ((msb << 16) + (lsb << 8) + (xlsb & 0xF))/16
 
-    def mesaure(self):
+    def measure(self):
         adc_p, adc_t = list(map(self._read_adc, (self.BMP280_PRESSURE,self.BMP280_TEMP)))
         t1,t2,t3 = self.DIG_T
         p1,p2,p3,p4,p5,p6,p7,p8,p9 = self.DIG_P
