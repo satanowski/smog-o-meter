@@ -67,8 +67,7 @@ class BMP280:
 
         #temp
         t_fine = (adc_t/16384.0-t1/1024.0) * t2 + \
-                 (adc_t/131072.0-t1/8192.0) * \
-                 (adc_t/131072.0-t1/8192.0) * t3
+                 ((adc_t/131072.0-t1/8192.0)**2) * t3
 
         # Pressure offset calculations
         var1 = (t_fine / 2.0) - 64000.0
