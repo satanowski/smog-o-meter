@@ -62,3 +62,6 @@ class LCD44780:
         for i in range(self.lcd_len):
             self._send_byte(ord(text[i]), self.SEND_MODE['DATA'])
 
+    def set_backlight(self, backlight):
+        self.backlight = self.BACKLIGHT[backlight]
+

@@ -40,6 +40,10 @@ class LcdSocketServer:
                 continue
             try:
                 j = json.loads(data)
+                if 'bl' in j:
+                    backlight = j.pop('bl')
+                else:
+                    backlight = None
             except ValueError:
                 continue
             for i in j:
@@ -47,6 +51,8 @@ class LcdSocketServer:
                     line_num = int(i)
                 except ValueError:
                     continue
+                if backlight is not None:
+                    self.lcd.set_backlight(backlight)
                 self.lcd.lcd_print(j[i], line_num)
 
 
