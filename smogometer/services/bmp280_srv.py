@@ -33,8 +33,8 @@ class BMP280SocketServer:
         self.sock.listen(1)
         while True:
             con, _ = self.sock.accept()
-            t,p = self.bmp.measure()
-            con.send("{:0.2f};{:0.2f}".format(t, p).encode())
+            m = self.bmp.measure()
+            con.send("{:0.2f};{:0.2f}".format(m.temperature, m.pressure).encode())
             con.close()
 
 

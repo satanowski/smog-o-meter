@@ -5,9 +5,11 @@ License: GNU AGPLv3
 """
 
 import time
+from collections import namedtuple
 
 import smbus2
 
+Measurement = namedtuple("Measurement", "temperature,pressure")
 
 class BMP280:
     # BMP280 Registers
@@ -79,12 +81,12 @@ class BMP280:
         var2 = p * p8/32768.0
         pressure = (p + (var1+var2+p7)/16.0)/100
 
-        return (t_fine/5120.0, pressure)
+        return Measurement(t_fine/5120.0, pressure)
 
 
 if __name__ == '__main__':
     bmp = BMP280()
-    t,p = bmp.mesaure()
-    print("Temperature: %.2f C" % t)
-    print("Pressure:    %.2f hPa" % p)
+    m = bmp.measure()
+    print("Temperature: {:0.2f} \u2103".format(m.temperature))
+    print("Pressure:    {:0.2f} hPa".format(m.pressure))
 
